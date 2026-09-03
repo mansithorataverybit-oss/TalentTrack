@@ -27,32 +27,31 @@
                             <span class="fw-bold small"><i class="bi bi-shield-lock me-1"></i>Admin Master</span>
                             <span class="badge bg-danger">Admin</span>
                         </div>
-                        <div class="opacity-75" style="font-size:0.75rem;">admin@talenttrack.com / admin123</div>
+                        <div class="opacity-75 d-flex justify-content-between" style="font-size:0.75rem;">
+                            <span>admin@talenttrack.com</span>
+                            <span class="text-warning"><i class="bi bi-key-fill me-1"></i>Enter DB Password</span>
+                        </div>
                     </div>
                     <div class="mb-2" style="background:rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;">
                         <div class="d-flex align-items-center justify-content-between mb-1">
                             <span class="fw-bold small"><i class="bi bi-person-workspace me-1"></i>Recruiter</span>
                             <span class="tt-role-badge-recruiter" style="font-size:0.65rem;">Approved</span>
                         </div>
-                        <div class="opacity-75" style="font-size:0.75rem;">recruiter@talenttrack.com / recruiter123</div>
+                        <div class="opacity-75 d-flex justify-content-between" style="font-size:0.75rem;">
+                            <span>recruiter@talenttrack.com</span>
+                            <span class="text-warning"><i class="bi bi-key-fill me-1"></i>Enter DB Password</span>
+                        </div>
                     </div>
                     <div class="mb-2" style="background:rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;">
                         <div class="d-flex align-items-center justify-content-between mb-1">
                             <span class="fw-bold small"><i class="bi bi-person-check me-1"></i>Interviewer</span>
                             <span class="tt-role-badge-interviewer" style="font-size:0.65rem;">Approved</span>
                         </div>
-                        <div class="opacity-75" style="font-size:0.75rem;">interviewer@talenttrack.com / interviewer123</div>
-                    </div>
-                    @if (ViewBag.DemoCandidateEmail != null)
-                    {
-                        <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:0.75rem 1rem;">
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <span class="fw-bold small"><i class="bi bi-person me-1"></i>Candidate</span>
-                                <span class="badge bg-warning" style="font-size:0.65rem;">Portal Active</span>
-                            </div>
-                            <div class="opacity-75" style="font-size:0.75rem;">@ViewBag.DemoCandidateEmail / @ViewBag.DemoCandidatePassword</div>
+                        <div class="opacity-75 d-flex justify-content-between" style="font-size:0.75rem;">
+                            <span>interviewer@talenttrack.com</span>
+                            <span class="text-warning"><i class="bi bi-key-fill me-1"></i>Enter DB Password</span>
                         </div>
-                    }
+                    </div>
                 </div>
             </div>
 
@@ -116,37 +115,19 @@
                         Sign In to Dashboard <i class="bi bi-arrow-right ms-1"></i>
                     </button>
 
-                    <!-- Quick Demo Fill Section -->
+                    <!-- Quick Role Select Section -->
                     <div class="mt-3 pt-3 border-top border-secondary border-opacity-25 text-center">
-                        <small class="text-secondary d-block mb-2">Quick demo login buttons:</small>
+                        <small class="text-secondary d-block mb-2">Quick Role Select:</small>
                         <div class="d-flex gap-1 justify-content-center flex-wrap">
-                            <button type="button" class="btn tt-demo-btn" onclick="fillDemo('admin@talenttrack.com', 'admin123')">
+                            <button type="button" class="btn tt-demo-btn" onclick="selectRole('admin@talenttrack.com')">
                                 <i class="bi bi-shield-lock me-1 text-danger"></i> Admin
                             </button>
-                            <button type="button" class="btn tt-demo-btn" onclick="fillDemo('recruiter@talenttrack.com', 'recruiter123')">
+                            <button type="button" class="btn tt-demo-btn" onclick="selectRole('recruiter@talenttrack.com')">
                                 <i class="bi bi-person-workspace me-1" style="color:#818CF8;"></i> Recruiter
                             </button>
-                            <button type="button" class="btn tt-demo-btn" onclick="fillDemo('interviewer@talenttrack.com', 'interviewer123')">
+                            <button type="button" class="btn tt-demo-btn" onclick="selectRole('interviewer@talenttrack.com')">
                                 <i class="bi bi-person-check me-1" style="color:#10B981;"></i> Interviewer
                             </button>
-                            @if (ViewBag.DemoCandidates != null && ((List<TalentTrack.Models.Candidate>)ViewBag.DemoCandidates).Any())
-                            {
-                                <div class="dropdown d-inline-block">
-                                    <button class="btn tt-demo-btn dropdown-toggle" type="button" id="candidateDemoDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-person me-1" style="color:#F59E0B;"></i> Candidate
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-dark shadow border-secondary" aria-labelledby="candidateDemoDropdown" style="max-height: 200px; overflow-y: auto; text-align: left;">
-                                        @foreach (var c in (List<TalentTrack.Models.Candidate>)ViewBag.DemoCandidates)
-                                        {
-                                            <li>
-                                                <a class="dropdown-item small" href="#" onclick="fillDemo('@c.Email', '@c.Phone'); return false;">
-                                                    @c.Name (@c.Email)
-                                                </a>
-                                            </li>
-                                        }
-                                    </ul>
-                                </div>
-                            }
                         </div>
                     </div>
                 </form>
@@ -170,8 +151,9 @@
 </div>
 
 <script>
-    function fillDemo(email, pass) {
+    function selectRole(email) {
         document.getElementById('loginEmail').value = email;
-        document.getElementById('loginPassword').value = pass;
+        document.getElementById('loginPassword').value = '';
+        document.getElementById('loginPassword').focus();
     }
 </script>
