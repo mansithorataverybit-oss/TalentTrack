@@ -179,3 +179,20 @@ This OTP is valid for 10 minutes.
 Best regards,
 TalentTrack System
 ============================================================
+
+============================================================
+SIMULATED EMAIL SENT
+Date: 03 Sept 2026, 02:34 PM
+To: admin@talenttrack.com
+Subject: TalentTrack Password Reset OTP
+Body:
+Hello,
+
+You have requested to reset your password. 
+Your 6-digit One Time Password (OTP) is: 838449
+
+This OTP is valid for 10 minutes.
+
+Best regards,
+TalentTrack System
+============================================================
